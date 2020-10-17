@@ -8,3 +8,6 @@ install firebase
 
 start project
 - npm start
+
+install react-router-dom
+- npm install react-router-dom
