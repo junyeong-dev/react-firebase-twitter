@@ -1,4 +1,5 @@
 import * as firebase from "firebase/app";
+import "firebase/auth";
 
 const firebaseConfig = {
     // REACT_APP_ : 환경 변수로써 사용할 때는 이 꼭 붙어야 함

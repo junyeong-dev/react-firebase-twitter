@@ -11,3 +11,6 @@ start project
 
 install react-router-dom
 - npm install react-router-dom
+
+Reference
+- jsconfig.json : https://create-react-app.dev/docs/importing-a-component/
