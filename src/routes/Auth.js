@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { authService } from "myFirebase";
+import { authService, firebaseInstance } from "myFirebase";
+import { auth } from "firebase";
 /* 
     Auth 관리
     firebase - console - authentication - sign in method (Email, Google, Github 선택; 물론 그 외에 것을 써도 상관없음)
@@ -28,7 +29,7 @@ const Auth = () => {
         let data;
         try {
             if(newAccount) {
-                // create account
+                //  name=""create account
                 // 아이디를 만든 후 firebase console의 Autentication에서 확인 가능
                 data = await authService.createUserWithEmailAndPassword(email, password);
             } else {
@@ -43,6 +44,16 @@ const Auth = () => {
     }
 
     const toggleAccount = () => setNewAccount((prev) => !prev);
+    const onSocialClick = async (event) => {
+        const { target:{ name } } = event;
+        let provider;
+        if(name === "google") {
+            provider = new firebaseInstance.auth.GoogleAuthProvider(); 
+        } else if(name === "github") {
+            provider = new firebaseInstance.auth.GithubAuthProvider(); 
+        }
+        await authService.signInWithPopup(provider);
+    }
 
     return(
         <div>
@@ -54,8 +65,8 @@ const Auth = () => {
             </form>
             <span onClick={ toggleAccount }>{ newAccount ? "Sign In" : "Create Account" }</span>
             <div>
-                <button>Continue with Google</button>
-                <button>Continue with Github</button>
+                <button name="google" onClick={ onSocialClick }>Continue with Google</button>
+                <button name="github" onClick={ onSocialClick }>Continue with Github</button>
             </div>
         </div>
     );
