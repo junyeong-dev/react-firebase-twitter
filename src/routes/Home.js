@@ -1,9 +1,18 @@
 import React, { useState } from"react";
+import { dbService } from "myFirebase";
 
 const Home = () => {
     const [tweet, setTweet] = useState("");
-    const onSubmit = (event) => {
-        event.perventDefault();
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        // reference : https://firebase.google.com/docs/reference/js/firebase.firestore?hl=ko
+        // FirebaseError: Missing or insufficient permissions 이 에러가 뜰 경우 
+        // Cloud Firestore - Rules - allow read, write: if true -> false를 true로 변경
+        await dbService.collection("tweets").add({
+            tweet,
+            createAt : Date.now()
+        });
+        setTweet("");
     }
     const onChange= (event) => {
         const { target:{ value }} = event;

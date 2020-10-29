@@ -1,5 +1,13 @@
 import * as firebase from "firebase/app";
 import "firebase/auth";
+// Firebase database 생성 : Firebase console - Cloud Firestore - Create database - Start in test mode 
+/* 
+    NoSQL기반
+    Collection : 기본적으로 폴더와 같음
+    Document : 흔히 아는 문서와 같음
+    Collection은 Document의 그룹
+*/
+import "firebase/firestore";
 
 const firebaseConfig = {
     // REACT_APP_ : 환경 변수로써 사용할 때는 이 꼭 붙어야 함
@@ -18,4 +26,4 @@ firebase.initializeApp(firebaseConfig);
 
 export const firebaseInstance = firebase;
 export const authService = firebase.auth();
-
+export const dbService = firebase.firestore();
