@@ -1,8 +1,18 @@
-import React, { useState } from"react";
+import React, { useState, useEffect } from"react";
 import { dbService } from "myFirebase";
 
 const Home = () => {
     const [tweet, setTweet] = useState("");
+    const [tweets, setTweets] = useState([]);
+    const getTweets = async() => {
+        // reference : https://firebase.google.com/docs/reference/js/firebase.firestore.QuerySnapshot?hl=ko
+        // get()의 리턴 값은 QuerySnapshot
+        const dvTweets = await dbService.collection("tweets").get();
+        dvTweets.forEach((document) => console.log(document.data()));
+    }
+    useEffect(() => {
+        getTweets();
+    }, []);
     const onSubmit = async (event) => {
         event.preventDefault();
         // reference : https://firebase.google.com/docs/reference/js/firebase.firestore?hl=ko
