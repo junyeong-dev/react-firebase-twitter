@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from"react";
 import { dbService } from "myFirebase";
 
-const Home = () => {
+const Home = ({ userObj }) => {
     const [tweet, setTweet] = useState("");
     const [tweets, setTweets] = useState([]);
     const getTweets = async() => {
@@ -26,8 +26,9 @@ const Home = () => {
         // FirebaseError: Missing or insufficient permissions 이 에러가 뜰 경우 
         // Cloud Firestore - Rules - allow read, write: if true -> false를 true로 변경
         await dbService.collection("tweets").add({
-            tweet,
-            createAt : Date.now()
+            text : tweet,
+            createAt : Date.now(),
+            creatorId : userObj.uid
         });
         setTweet("");
     }
