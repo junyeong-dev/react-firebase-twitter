@@ -4,21 +4,30 @@ import { dbService } from "myFirebase";
 const Home = ({ userObj }) => {
     const [tweet, setTweet] = useState("");
     const [tweets, setTweets] = useState([]);
-    const getTweets = async() => {
-        // reference : https://firebase.google.com/docs/reference/js/firebase.firestore.QuerySnapshot?hl=ko
-        // get()의 리턴 값은 QuerySnapshot
-        const dvTweets = await dbService.collection("tweets").get();
-        // dvTweets.forEach((document) => console.log(document.data()));
-        dvTweets.forEach((document) => {
-            const tweetObject = {
-                ...document.data(),
-                id: document.id
-            }
-            setTweets((prev) => [tweetObject, ...prev]);
-        });
-    }
+    // const getTweets = async() => {
+    //     // reference : https://firebase.google.com/docs/reference/js/firebase.firestore.QuerySnapshot?hl=ko
+    //     // get()의 리턴 값은 QuerySnapshot
+    //     const dvTweets = await dbService.collection("tweets").get();
+    //     // dvTweets.forEach((document) => console.log(document.data()));
+    //     dvTweets.forEach((document) => {
+    //         const tweetObject = {
+    //             ...document.data(),
+    //             id: document.id
+    //         }
+    //         setTweets((prev) => [tweetObject, ...prev]);
+    //     });
+    // }
     useEffect(() => {
-        getTweets();
+        // getTweets();
+        // 실시간으로 반영하기 위한 기능
+        dbService.collection("tweets").onSnapshot(snapshot => {
+            // foreach보다 더 적게 re-render함
+            const tweetArray = snapshot.docs.map(doc => ({ 
+                id : doc.id, 
+                ...doc.data(), 
+            }));
+            setTweets(tweetArray);
+        });
     }, []);
     const onSubmit = async (event) => {
         event.preventDefault();
@@ -45,7 +54,7 @@ const Home = ({ userObj }) => {
         <div>
             { tweets.map(tweet => <div key={ tweet.id }>
                 <h4>
-                    { tweet.tweet }
+                    { tweet.text }
                 </h4>
             </div>) }
         </div>
