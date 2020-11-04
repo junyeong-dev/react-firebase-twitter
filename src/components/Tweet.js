@@ -1,10 +1,15 @@
 import React from "react";
 
-const Tweet = ({ tweetObj }) => {
-    return (
+const Tweet = ({ tweetObj, isOwner }) => (
     <div key={ tweetObj.id }>
         <h4>{ tweetObj.text }</h4>
-    </div>);
-};
+        { isOwner && (
+            <>
+                <button>Delete Tweet</button>
+                <button>Edit Tweet</button>
+            </>
+        )}
+    </div>
+);
 
 export default Tweet;
