@@ -14,12 +14,26 @@ const Tweet = ({ tweetObj, isOwner }) => {
         }
     }
     const toggleEditing = () => setEditing((prev) => !prev);
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        // reference : https://firebase.google.com/docs/reference/js/firebase.firestore.DocumentReference#update
+        await dbService.doc(`tweets/${ tweetObj.id }`).update({
+            text: newTweet
+        });
+        setEditing(false);
+    }
+    const onChange = (event) => {
+        const {
+            target: { value }
+        } = event;
+        setNewTweet(value);
+    }
     return (
         <div>
             {editing ? (
                 <>
-                <form>
-                    <input type="text" placeholder="Edit" value={ newTweet } required />
+                <form onSubmit={ onSubmit }>
+                    <input type="text" placeholder="Edit" value={ newTweet } onChange={ onChange } required />
                     <input type="submit" value="Update Tweet"/>
                 </form>
                 <button onClick={ toggleEditing }>Cancle</button>
