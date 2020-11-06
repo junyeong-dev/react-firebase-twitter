@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { dbService } from "myFirebase";
 
 const Tweet = ({ tweetObj, isOwner }) => {
+    // 수정버튼을 눌렀는지를 확인하기 위한 state
+    const [editing, setEditing] = useState(false);
+    const [newTweet, setNewTweet] = useState(tweetObj.text);
     const onDeleteClick = async () => {
         const checkDelete = window.confirm("Are you sure you want to delete this tweet?");
         if(checkDelete){
@@ -10,17 +13,35 @@ const Tweet = ({ tweetObj, isOwner }) => {
             await dbService.doc(`tweets/${ tweetObj.id }`).delete();
         }
     }
+    const toggleEditing = () => setEditing((prev) => !prev);
     return (
-        <div key={ tweetObj.id }>
-            <h4>{ tweetObj.text }</h4>
-            { isOwner && (
+        <div>
+            {editing ? (
                 <>
-                    <button onClick={ onDeleteClick }>Delete Tweet</button>
-                    <button>Edit Tweet</button>
+                <form>
+                    <input type="text" placeholder="Edit" value={ newTweet } required />
+                    <input type="submit" value="Update Tweet"/>
+                </form>
+                <button onClick={ toggleEditing }>Cancle</button>
                 </>
-            )}
+                ) : (
+                <>
+                    <h4>{ tweetObj.text }</h4>
+                    { isOwner && (
+                        <>
+                            <button onClick={ onDeleteClick }>Delete Tweet</button>
+                            <button onClick={ toggleEditing }>Edit Tweet</button>
+                        </>
+                    )}
+                </>
+                )
+
+            }
         </div>
     );
 };
+
+
+
 
 export default Tweet;
