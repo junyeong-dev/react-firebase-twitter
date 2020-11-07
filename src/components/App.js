@@ -7,23 +7,19 @@ function App() {
   // https://firebase.google.com/docs/reference
   // https://firebase.google.com/docs/reference/js/firebase.auth.Auth
   const [init, setInit] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   // 로그인한 유저의 정보를 담을 객체
   const [userObj, setUserObj] = useState(null);
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if(user) {
-        setIsLoggedIn(true);
         setUserObj(user);
-      } else {
-        setIsLoggedIn(false);
       }
       setInit(true);
     });
   }, [])
   return (
     <>
-      { init ? <AppRouter isLoggedIn={ isLoggedIn } userObj={ userObj } /> : "Initializing..." }
+      { init ? <AppRouter isLoggedIn={ Boolean(userObj) } userObj={ userObj } /> : "Initializing..." }
     </>
   );
 }

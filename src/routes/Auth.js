@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { authService, firebaseInstance } from "myFirebase";
-import { auth } from "firebase";
+// import { auth } from "firebase";
+
 /* 
     Auth 관리
     firebase - console - authentication - sign in method (Email, Google, Github 선택; 물론 그 외에 것을 써도 상관없음)
