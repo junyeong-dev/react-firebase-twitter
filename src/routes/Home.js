@@ -49,13 +49,20 @@ const Home = ({ userObj }) => {
     const onFileChange = (event) => {
         const { target: { files } } = event;
         const theFile = files[0];
+        // reference : https://developer.mozilla.org/ko/docs/Web/API/FileReader
+        // reference : https://w3c.github.io/FileAPI/#FileReader-interface
+        const reader = new FileReader();
+        reader.onloadend = (finishedEvent) => {
+            console.log(finishedEvent);
+        }
+        reader.readAsDataURL(theFile);
     }
     return (
     <div>
         <form onSubmit={ onSubmit }>
             <input type="text" placeholder="what's on your mind" maxLength={ 120 } value={ tweet } onChange={ onChange }/>
             {/* accept : 읽을 파일 종류를 선택 */}
-            <input type="file" accept="image/*" onFIleChange={ onFileChange }/>
+            <input type="file" accept="image/*" onChange={ onFileChange }/>
             <input type="submit" value="Tweet"/>
         </form>
         <div>
