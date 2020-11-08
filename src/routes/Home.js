@@ -42,14 +42,20 @@ const Home = ({ userObj }) => {
         });
         setTweet("");
     }
-    const onChange= (event) => {
-        const { target:{ value }} = event;
+    const onChange = (event) => {
+        const { target:{ value } } = event;
         setTweet(value);
+    }
+    const onFileChange = (event) => {
+        const { target: { files } } = event;
+        const theFile = files[0];
     }
     return (
     <div>
         <form onSubmit={ onSubmit }>
             <input type="text" placeholder="what's on your mind" maxLength={ 120 } value={ tweet } onChange={ onChange }/>
+            {/* accept : 읽을 파일 종류를 선택 */}
+            <input type="file" accept="image/*" onFIleChange={ onFileChange }/>
             <input type="submit" value="Tweet"/>
         </form>
         <div>
