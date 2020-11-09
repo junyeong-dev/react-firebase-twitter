@@ -5,6 +5,7 @@ import Tweet from "components/Tweet";
 const Home = ({ userObj }) => {
     const [tweet, setTweet] = useState("");
     const [tweets, setTweets] = useState([]);
+    const [attachment, setAttachment] = useState();
     // const getTweets = async() => {
     //     // reference : https://firebase.google.com/docs/reference/js/firebase.firestore.QuerySnapshot?hl=ko
     //     // get()의 리턴 값은 QuerySnapshot
@@ -53,9 +54,13 @@ const Home = ({ userObj }) => {
         // reference : https://w3c.github.io/FileAPI/#FileReader-interface
         const reader = new FileReader();
         reader.onloadend = (finishedEvent) => {
-            console.log(finishedEvent);
+            const { currentTarget: { result } } = finishedEvent;
+            setAttachment(result);
         }
         reader.readAsDataURL(theFile);
+    }
+    const onClearAttachment = () => {
+        setAttachment(null);
     }
     return (
     <div>
@@ -64,6 +69,11 @@ const Home = ({ userObj }) => {
             {/* accept : 읽을 파일 종류를 선택 */}
             <input type="file" accept="image/*" onChange={ onFileChange }/>
             <input type="submit" value="Tweet"/>
+            { attachment && 
+                <div>
+                    <img src={ attachment } width="50px" height="50px" />
+                    <button onClick={ onClearAttachment }>Clear</button>
+                </div> }
         </form>
         <div>
             { tweets.map((tweet) => (
