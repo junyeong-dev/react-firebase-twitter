@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from"react";
-import { dbService } from "myFirebase";
+import { dbService, storageService } from "myFirebase";
 import Tweet from "components/Tweet";
+import { v4 as uuidv4 } from "uuid";
 
 const Home = ({ userObj }) => {
     const [tweet, setTweet] = useState("");
@@ -33,15 +34,21 @@ const Home = ({ userObj }) => {
     }, []);
     const onSubmit = async (event) => {
         event.preventDefault();
+        // reference : https://firebase.google.com/docs/reference/js/firebase.storage.Reference?hl=ko
+        // collection과 비슷함
+        const fileRef = storageService.ref().child(`${ userObj.uid }/${ uuidv4() }`);
+        // upload 한 것은 Firebase console - Storage에서 확인 가능
+        const response = await fileRef.putString(attachment, "data_url");
+        console.log(response);
         // reference : https://firebase.google.com/docs/reference/js/firebase.firestore?hl=ko
         // FirebaseError: Missing or insufficient permissions 이 에러가 뜰 경우 
         // Cloud Firestore - Rules - allow read, write: if true -> false를 true로 변경
-        await dbService.collection("tweets").add({
-            text : tweet,
-            createAt : Date.now(),
-            creatorId : userObj.uid
-        });
-        setTweet("");
+        // await dbService.collection("tweets").add({
+        //     text : tweet,
+        //     createAt : Date.now(),
+        //     creatorId : userObj.uid
+        // });
+        // setTweet("");
     }
     const onChange = (event) => {
         const { target:{ value } } = event;

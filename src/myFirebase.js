@@ -1,5 +1,6 @@
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/storage";
 // Firebase database 생성 : Firebase console - Cloud Firestore - Create database - Start in test mode 
 /* 
     NoSQL기반
@@ -27,3 +28,5 @@ firebase.initializeApp(firebaseConfig);
 export const firebaseInstance = firebase;
 export const authService = firebase.auth();
 export const dbService = firebase.firestore();
+// reference : https://firebase.google.com/docs/reference/js/firebase.storage?hl=ko
+export const storageService = firebase.storage();
