@@ -34,21 +34,29 @@ const Home = ({ userObj }) => {
     }, []);
     const onSubmit = async (event) => {
         event.preventDefault();
-        // reference : https://firebase.google.com/docs/reference/js/firebase.storage.Reference?hl=ko
-        // collection과 비슷함
-        const fileRef = storageService.ref().child(`${ userObj.uid }/${ uuidv4() }`);
-        // upload 한 것은 Firebase console - Storage에서 확인 가능
-        const response = await fileRef.putString(attachment, "data_url");
-        console.log(response);
+        let attachmentUrl = "";
+        console.log(attachment);
+        if(attachment != undefined){
+            // reference : https://firebase.google.com/docs/reference/js/firebase.storage.Reference?hl=ko
+            // collection과 비슷함
+            // uuid : 특별한 식별자를 랜덤으로 생성해줌
+            const attachmentRef = storageService.ref().child(`${ userObj.uid }/${ uuidv4() }`);
+            // upload 한 것은 Firebase console - Storage에서 확인 가능
+            const response = await attachmentRef.putString(attachment, "data_url");
+            attachmentUrl = await response.ref.getDownloadURL();
+        };
         // reference : https://firebase.google.com/docs/reference/js/firebase.firestore?hl=ko
         // FirebaseError: Missing or insufficient permissions 이 에러가 뜰 경우 
         // Cloud Firestore - Rules - allow read, write: if true -> false를 true로 변경
-        // await dbService.collection("tweets").add({
-        //     text : tweet,
-        //     createAt : Date.now(),
-        //     creatorId : userObj.uid
-        // });
-        // setTweet("");
+        const tweetObj = {
+            text : tweet,
+            createAt : Date.now(),
+            creatorId : userObj.uid,
+            attachmentUrl
+        };
+        await dbService.collection("tweets").add(tweetObj);
+        setTweet("");
+        setAttachment("");
     }
     const onChange = (event) => {
         const { target:{ value } } = event;
