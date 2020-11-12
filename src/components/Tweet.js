@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { dbService } from "myFirebase";
+import { dbService, storageService } from "myFirebase";
 
 const Tweet = ({ tweetObj, isOwner }) => {
     // 수정버튼을 눌렀는지를 확인하기 위한 state
@@ -11,6 +11,9 @@ const Tweet = ({ tweetObj, isOwner }) => {
             // reference : https://firebase.google.com/docs/reference/js/firebase.firestore.DocumentReference#delete
             // ['] single quotation [`] 이거 여야함
             await dbService.doc(`tweets/${ tweetObj.id }`).delete();
+            // reference : https://firebase.google.com/docs/reference/js/firebase.storage.Storage#reffromurl
+            // Firebase의 storage에 있는 파일을 지움
+            await storageService.refFromURL(tweetObj.attachmentUrl).delete();
         }
     }
     const toggleEditing = () => setEditing((prev) => !prev);
