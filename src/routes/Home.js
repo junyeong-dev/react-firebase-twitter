@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 const Home = ({ userObj }) => {
     const [tweet, setTweet] = useState("");
     const [tweets, setTweets] = useState([]);
-    const [attachment, setAttachment] = useState();
+    const [attachment, setAttachment] = useState("");
     // const getTweets = async() => {
     //     // reference : https://firebase.google.com/docs/reference/js/firebase.firestore.QuerySnapshot?hl=ko
     //     // get()의 리턴 값은 QuerySnapshot
@@ -36,7 +36,7 @@ const Home = ({ userObj }) => {
         event.preventDefault();
         let attachmentUrl = "";
         // console.log(attachment);
-        if(attachment !== undefined){
+        if(attachment !== ""){
             // reference : https://firebase.google.com/docs/reference/js/firebase.storage.Reference?hl=ko
             // collection과 비슷함
             // uuid : 특별한 식별자를 랜덤으로 생성해줌
