@@ -1,14 +1,30 @@
-import React, { useEffect } from"react";
+import React, { useEffect, useState } from"react";
 import { authService, dbService } from "myFirebase";
 import { useHistory } from "react-router-dom";
 
 export default ({ userObj }) => {
     // reference : https://reactrouter.com/web/api/Redirect
     const history = useHistory();
+    const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
     const onLogOutClick = () => {
         authService.signOut();
         // Redirect
         history.push("/");
+    }
+    const onChange = (event) => {
+        const {
+            target: { value },
+        } = event;
+        setNewDisplayName(value);
+    }
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        if(userObj.displayName !== newDisplayName) {
+            // reference : https://firebase.google.com/docs/reference/js/firebase.User#updateprofile
+            await userObj.updateProfile({
+                displayName: newDisplayName
+            });
+        }
     }
     const getMyTweets = async() => {
         // Firebase의 데이터를 필터링해서 가져옴
@@ -26,6 +42,10 @@ export default ({ userObj }) => {
     }, []);
     return (
     <>
+        <form onSubmit={ onSubmit }>
+            <input type="text" placeholder="Display name" onChange={ onChange } value={ newDisplayName }/>
+            <input type="submit" value="Update Profile" />
+        </form>
         <button onClick={ onLogOutClick }>Log Out</button>
     </>
     );
