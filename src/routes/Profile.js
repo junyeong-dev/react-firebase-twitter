@@ -2,7 +2,7 @@ import React, { useEffect, useState } from"react";
 import { authService, dbService } from "myFirebase";
 import { useHistory } from "react-router-dom";
 
-export default ({ userObj }) => {
+export default ({ refreshUser, userObj }) => {
     // reference : https://reactrouter.com/web/api/Redirect
     const history = useHistory();
     const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
@@ -24,6 +24,7 @@ export default ({ userObj }) => {
             await userObj.updateProfile({
                 displayName: newDisplayName
             });
+            refreshUser();
         }
     }
     const getMyTweets = async() => {
