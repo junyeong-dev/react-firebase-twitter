@@ -15,5 +15,14 @@ install react-router-dom
 install uuid
 - npm install uuid
 
+install fortawesome
+- npm i --save @fortawesome/fontawesome-svg-core
+- npm install --save @fortawesome/free-solid-svg-icons
+- npm install --save @fortawesome/react-fontawesome
+- npm install --save @fortawesome/free-brands-svg-icons
+- npm install --save @fortawesome/free-regular-svg-icons
+- npm install --save @fortawesome/fontawesome-free
+
 Reference
 - jsconfig.json : https://create-react-app.dev/docs/importing-a-component/
+
