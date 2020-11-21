@@ -62,7 +62,7 @@ const TweetFactory = ({ userObj }) => {
                 <input type="submit" value="&rarr;" className="factoryInput_arrow"/>
             </div>
 
-            <label for="attach-file" className="factoryInput__label">
+            <label for="attach-file" className="factoryInput_label">
                 <span>Add photos</span>
                 <FontAwesomeIcon icon={faPlus} />
             </label>
@@ -70,9 +70,9 @@ const TweetFactory = ({ userObj }) => {
             {/* accept : 읽을 파일 종류를 선택 */}
             <input id="attach-file" type="file" accept="image/*" onChange={ onFileChange } style={{ opacity: 0 }}/>
             { attachment && (
-                <div className="factoryForm__attachment">
+                <div className="factoryForm_attachment">
                     <img src={attachment} style={{ backgroundImage: attachment }} />
-                    <div className="factoryForm__clear" onClick={onClearAttachment}>
+                    <div className="factoryForm_clear" onClick={onClearAttachment}>
                         <span>Remove</span>
                         <FontAwesomeIcon icon={faTimes} />
                     </div>
