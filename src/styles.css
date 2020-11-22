@@ -111,3 +111,36 @@ form {
     border-radius: 20px;
     color: white;
 }
+
+.factoryInput_label {
+    color: #04aaff;
+    cursor: pointer;
+  }
+  
+  .factoryInput_label span {
+    margin-right: 10px;
+    font-size: 12px;
+  }
+  
+  .factoryForm_attachment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .factoryForm_attachment img {
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
+  }
+  
+  .factoryForm_clear {
+    color: #04aaff;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .factoryForm_clear span {
+    margin-right: 10px;
+    font-size: 12px;
+  }
