@@ -42,13 +42,13 @@ export default ({ refreshUser, userObj }) => {
         getMyTweets();
     }, []);
     return (
-    <>
-        <form onSubmit={ onSubmit }>
-            <input type="text" placeholder="Display name" onChange={ onChange } value={ newDisplayName }/>
-            <input type="submit" value="Update Profile" />
-        </form>
-        <button onClick={ onLogOutClick }>Log Out</button>
-    </>
+        <div className="container">
+            <form className="profileForm" onSubmit={ onSubmit }>
+                <input className="formInput" type="text" placeholder="Display name" onChange={ onChange } value={ newDisplayName } autoFocus />
+                <input className="formBtn" type="submit" value="Update Profile" style={{ marginTop: 10 }}/>
+            </form>
+            <span className="formBtn cancelBtn logOut" onClick={ onLogOutClick }> Log Out </span>
+        </div>
     );
 
 };

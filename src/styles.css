@@ -115,32 +115,81 @@ form {
 .factoryInput_label {
     color: #04aaff;
     cursor: pointer;
-  }
+}
   
-  .factoryInput_label span {
+.factoryInput_label span {
     margin-right: 10px;
     font-size: 12px;
-  }
+}
   
-  .factoryForm_attachment {
+.factoryForm_attachment {
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-  
-  .factoryForm_attachment img {
+}
+
+.factoryForm_attachment img {
     height: 80px;
     width: 80px;
     border-radius: 40px;
-  }
-  
-  .factoryForm_clear {
+}
+
+.factoryForm_clear {
     color: #04aaff;
     cursor: pointer;
     text-align: center;
-  }
-  
-  .factoryForm_clear span {
+}
+
+.factoryForm_clear span {
     margin-right: 10px;
     font-size: 12px;
-  }
+}
+
+/* Tweet */
+
+.tweetEdit .formBtn {
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.tweet {
+    margin-bottom: 20px;
+    background-color: white;
+    width: 100%;
+    max-width: 320px;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.tweet h4 {
+    font-size: 14px;
+}
+
+.tweet img {
+    right: -10px;
+    top: 20px;
+    position: absolute;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.tweet_actions {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.tweet_actions span {
+    cursor: pointer;
+}
+
+.tweet_actions span:first-child {
+    margin-right: 10px;
+}
