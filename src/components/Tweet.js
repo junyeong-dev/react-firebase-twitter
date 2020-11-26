@@ -49,7 +49,7 @@ const Tweet = ({ tweetObj, isOwner }) => {
                     { tweetObj.attachmentUrl && 
                         <img src={tweetObj.attachmentUrl} /> }
                     { isOwner && (
-                        <div class="nweet__actions">
+                        <div className="nweet__actions">
                             <span onClick={ onDeleteClick }>
                                 <FontAwesomeIcon icon={ faTrash } />
                             </span>
