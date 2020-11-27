@@ -23,6 +23,12 @@ install fortawesome
 - npm install --save @fortawesome/free-regular-svg-icons
 - npm install --save @fortawesome/fontawesome-free
 
+install gh-pages(Deploying github)
+- npm i gh-pages
+
+Deploying
+- npm run deploy
+
 Reference
 - jsconfig.json : https://create-react-app.dev/docs/importing-a-component/
 
