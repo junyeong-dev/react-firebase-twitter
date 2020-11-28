@@ -13,6 +13,12 @@ import { faTwitter, faGoogle, faGithub } from "@fortawesome/free-brands-svg-icon
     Homepage URL : callback URL에서 뒤 [ /__/auth/handler ] 을 빼고
     Authorization callback URL : 위에서 github를 설정 했을때 나오는 callback url 붙여넣기
     그 후 생성된 Client ID와 Client Secret을 firebase에 붙여넣기
+
+    firebase - console - authentication - sign in method - authorized domains(승인된 도메인)에 특정 도메인을
+    추가하여 접속을 허용할 수 있음
+
+    firebase - console - cloud firestore - rules의 작성 규칙은 아래 참조
+    https://firebase.google.com/docs/rules/rules-language
 */
 const Auth = () => {
     const onSocialClick = async (event) => {
