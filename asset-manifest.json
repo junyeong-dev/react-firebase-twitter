@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-firebase-twitter/static/css/main.2be2ee4d.chunk.css",
-    "main.js": "/react-firebase-twitter/static/js/main.e1f88a83.chunk.js",
-    "main.js.map": "/react-firebase-twitter/static/js/main.e1f88a83.chunk.js.map",
+    "main.js": "/react-firebase-twitter/static/js/main.ba26d5e3.chunk.js",
+    "main.js.map": "/react-firebase-twitter/static/js/main.ba26d5e3.chunk.js.map",
     "runtime-main.js": "/react-firebase-twitter/static/js/runtime-main.52a756c2.js",
     "runtime-main.js.map": "/react-firebase-twitter/static/js/runtime-main.52a756c2.js.map",
     "static/js/2.a20a9d05.chunk.js": "/react-firebase-twitter/static/js/2.a20a9d05.chunk.js",
     "static/js/2.a20a9d05.chunk.js.map": "/react-firebase-twitter/static/js/2.a20a9d05.chunk.js.map",
     "index.html": "/react-firebase-twitter/index.html",
-    "precache-manifest.5b2b078aaddec39f882ec56ebaf59d4b.js": "/react-firebase-twitter/precache-manifest.5b2b078aaddec39f882ec56ebaf59d4b.js",
+    "precache-manifest.afc33e15b6959f5ac97775028cb6c154.js": "/react-firebase-twitter/precache-manifest.afc33e15b6959f5ac97775028cb6c154.js",
     "service-worker.js": "/react-firebase-twitter/service-worker.js",
     "static/css/main.2be2ee4d.chunk.css.map": "/react-firebase-twitter/static/css/main.2be2ee4d.chunk.css.map",
     "static/js/2.a20a9d05.chunk.js.LICENSE.txt": "/react-firebase-twitter/static/js/2.a20a9d05.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.52a756c2.js",
     "static/js/2.a20a9d05.chunk.js",
     "static/css/main.2be2ee4d.chunk.css",
-    "static/js/main.e1f88a83.chunk.js"
+    "static/js/main.ba26d5e3.chunk.js"
   ]
 }

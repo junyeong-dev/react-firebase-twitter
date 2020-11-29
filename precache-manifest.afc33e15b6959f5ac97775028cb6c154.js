@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "29e0d78ab2a226fed93f94abfcb656f3",
+    "revision": "3539a9a2e6eb37a6ad9125f1de371864",
     "url": "/react-firebase-twitter/index.html"
   },
   {
-    "revision": "fa3a34b40b98c0a1c9fa",
+    "revision": "d93fa3bb02e89465f3ef",
     "url": "/react-firebase-twitter/static/css/main.2be2ee4d.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-firebase-twitter/static/js/2.a20a9d05.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "fa3a34b40b98c0a1c9fa",
-    "url": "/react-firebase-twitter/static/js/main.e1f88a83.chunk.js"
+    "revision": "d93fa3bb02e89465f3ef",
+    "url": "/react-firebase-twitter/static/js/main.ba26d5e3.chunk.js"
   },
   {
     "revision": "95b7628cad44cdeb9430",
